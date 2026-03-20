@@ -1,6 +1,8 @@
-package casestudy;
+package Water_Quality_Classifier;
+
 public class WaterQualityClassifier {
 
+    // Must return a String so servlet can store it
     public static String classify(double pH, double turbidity, double dissolvedOxygen, double temperature) {
         // Strict unsafe conditions
         if (pH < 6.0 || pH > 9.0) {
@@ -14,11 +16,11 @@ public class WaterQualityClassifier {
         }
 
         // Moderate conditions
-        if ((pH < 6.5 && pH > 8.5) || (turbidity > 5.0 && turbidity <= 8.0) || (dissolvedOxygen >= 4.0 && dissolvedOxygen < 5.0)) {
+        if ((pH < 6.5 || pH > 8.5) || (turbidity > 5.0 && turbidity <= 8.0) || (dissolvedOxygen >= 4.0 && dissolvedOxygen < 5.0)) {
             return "Moderate - Needs attention";
         }
 
-        // Acceptable conditions (slightly off but not dangerous)
+        // Safe conditions
         if ((pH >= 6.5 && pH <= 8.5) && (turbidity <= 5.0) && (dissolvedOxygen >= 5.0) && (temperature >= 10.0 && temperature <= 35.0)) {
             return "Safe";
         }
@@ -26,6 +28,3 @@ public class WaterQualityClassifier {
         return "Acceptable - Within tolerable limits";
     }
 }
-
-
-
